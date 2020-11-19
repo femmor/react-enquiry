@@ -69,7 +69,7 @@ const ContactForm = () => {
                     onChange={onInputChange}
                 />
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" className="btn-block">
                     Submit
                 </Button>
             </form>
