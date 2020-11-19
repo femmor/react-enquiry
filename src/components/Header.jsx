@@ -3,7 +3,7 @@ import React from 'react'
 const Header = () => {
     return (
         <header>
-            <h1>Contact us</h1>
+            <h1>Enquiry Form</h1>
         </header>
     )
 }
