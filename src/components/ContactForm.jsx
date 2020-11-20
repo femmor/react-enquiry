@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import { Form, Button } from "react-bootstrap"
+import axios from 'axios';
 
 const ContactForm = () => {
     const [state, setState] = useState({
@@ -8,6 +9,8 @@ const ContactForm = () => {
         subject: '',
         message: ''
     })
+
+    const [result, setResult] = useState(null)
 
     const onInputChange = e => {
         const {name, value} = e.target
@@ -21,12 +24,34 @@ const ContactForm = () => {
     const sendEmail = e => {
         e.preventDefault()
 
-        console.log(state)
+        // Make a post request using axios
+        // Pass the form data as a json
+        axios.post('/send', {...state})
+        .then(response => {
+            setResult(response.data)
+            setState({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            })
+        })
+        .catch(() => {
+            setResult({
+                success: false,
+                message: "Something went wrong, please try again later..."
+            })
+        })
     }
 
 
     return (
         <>
+            {result && (
+                <p className={`${result.success ? 'success' : 'error'}`}>
+                {result.message}
+                </p>
+            )}
             <form onSubmit={sendEmail}>
                 <Form.Group controlId="name">
                 <Form.Label>Full Name</Form.Label>
