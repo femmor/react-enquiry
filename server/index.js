@@ -31,9 +31,9 @@ app.post('/send', (req, res) => {
             <h3>Contact details</h3>
             <ul>
                 <li>Name: ${req.body.name}</li>
-                <li>Name: ${req.body.email}</li>
-                <li>Name: ${req.body.subject}</li>
-                <li>Name: ${req.body.message}</li>
+                <li>Email: ${req.body.email}</li>
+                <li>Subject: ${req.body.subject}</li>
+                <li>Message: ${req.body.message}</li>
             </ul>
           `
       }
